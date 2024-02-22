@@ -1,0 +1,43 @@
+Created a new atom named: HB within residue: .R<LEU 15>
+Created a new atom named: HB within residue: .R<GLN 18>
+Created a new atom named: HE2 within residue: .R<GLU 22>
+Creating new UNIT for residue: NMA sequence: 32
+
+/usr/local/amber22/bin/teLeap: Warning!
+One sided connection. Residue () missing connect0 atom.
+Created a new atom named: N within residue: .R<NMA 32>
+Created a new atom named: CA within residue: .R<NMA 32>
+Created a new atom named: H within residue: .R<NMA 32>
+Created a new atom named: 1HA within residue: .R<NMA 32>
+Created a new atom named: 2HA within residue: .R<NMA 32>
+Created a new atom named: 3HA within residue: .R<NMA 32>
+Created a new atom named: 1H within residue: .R<ACE 33>
+Created a new atom named: 2H within residue: .R<ACE 33>
+Created a new atom named: 3H within residue: .R<ACE 33>
+Created a new atom named: H2 within residue: .R<THR 34>
+Created a new atom named: HD2 within residue: .R<ASP 58>
+Created a new atom named: HD2 within residue: .R<ASP 64>
+Created a new atom named: HE2 within residue: .R<GLU 81>
+Created a new atom named: HB within residue: .R<LEU 146>
+Created a new atom named: HB within residue: .R<ASP 203>
+Created a new atom named: HB within residue: .R<LEU 206>
+Created a new atom named: HB within residue: .R<LYS 207>
+Created a new atom named: HB within residue: .R<TYR 210>
+Created a new atom named: HB2 within residue: .R<THR 212>
+Created a new atom named: HB within residue: .R<GLN 216>
+Created a new atom named: HB within residue: .R<HIE 217>
+Created a new atom named: HB within residue: .R<TRP 219>
+Created a new atom named: HE2 within residue: .R<GLU 252>
+Created a new atom named: HD2 within residue: .R<ASP 349>
+Created a new atom named: HE2 within residue: .R<GLU 392>
+Created a new atom named: HD2 within residue: .R<ASP 435>
+Creating new UNIT for residue: NMA sequence: 442
+
+/usr/local/amber22/bin/teLeap: Warning!
+One sided connection. Residue () missing connect0 atom.
+Created a new atom named: N within residue: .R<NMA 442>
+Created a new atom named: CA within residue: .R<NMA 442>
+Created a new atom named: H within residue: .R<NMA 442>
+Created a new atom named: 1HA within residue: .R<NMA 442>
+Created a new atom named: 2HA within residue: .R<NMA 442>
+Created a new atom named: 3HA within residue: .R<NMA 442>
