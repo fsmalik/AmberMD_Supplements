@@ -11,6 +11,8 @@ args = parser.parse_args()
 initial_read  = open(str(args.input), 'r')
 listed_initial_read = list(initial_read)
 
+remark_count = 0
+
 for i in np.arange(0, len(listed_initial_read)):
     if listed_initial_read[i].startswith('REMARK'):
         remark_count = i+1
