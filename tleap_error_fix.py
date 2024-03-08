@@ -153,6 +153,32 @@ for i in np.arange(0,len(uss_enterprise_errors)):
             qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
             pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'HB2'
 
+    if qres == 'MET' and qatom == 'H2':
+        for j in np.arange(0,len(query_00)):
+            qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
+            pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
+
+    if qres == 'ARG' and qatom == 'H1':
+        for j in np.arange(0,len(query_00)):
+            qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
+            pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
+
+    if qres == 'ALA' and qatom == 'H1':
+        for j in np.arange(0,len(query_00)):
+            qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
+            pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
+
+    if qres == 'GLU' and qatom == 'H1':
+        for j in np.arange(0,len(query_00)):
+            qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
+            pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
+
+    if qres == 'LEU' and qatom == 'H1':
+        for j in np.arange(0,len(query_00)):
+            qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
+            pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
+
+
 with open(str(args.output), 'w') as f:
     for i, row in pdb.iterrows():
         atom_line = f'{row["record_name"]:<6}{row["serial_number"]:>5}{row["atom_name"]:>5}{row["residue"]:>4}{row["chain"]:>2}{row["res_seq"]:>4}{row["orth_x"]:>12}{row["orth_y"]:>8}{row["orth_z"]:>8}{row["occupancy"]:>6}{row["temp_factor"]:>6}{row["element_plus_charge"]:>12}'+'\n'
