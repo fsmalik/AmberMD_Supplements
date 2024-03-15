@@ -153,6 +153,11 @@ for i in np.arange(0,len(uss_enterprise_errors)):
             qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
             pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'HB2'
 
+    if qres == 'TRP' and qatom == 'H1':
+        for j in np.arange(0,len(query_00)):
+            qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
+            pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
+    
     if qres == 'MET' and qatom == 'H2':
         for j in np.arange(0,len(query_00)):
             qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
@@ -179,6 +184,11 @@ for i in np.arange(0,len(uss_enterprise_errors)):
             pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
     
     if qres == 'LEU' and qatom == 'H1':
+        for j in np.arange(0,len(query_00)):
+            qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
+            pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
+
+    if qres == 'PHE' and qatom == 'H1':
         for j in np.arange(0,len(query_00)):
             qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
             pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
