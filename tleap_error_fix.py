@@ -99,11 +99,6 @@ for i in np.arange(0,len(uss_enterprise_errors)):
             qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
             pdb = pdb[(pdb.residue != qres) | (pdb.atom_name != qatom) | (pdb.res_seq != qres_seq)]
 
-    if qres == 'GLU' and qatom == 'HE2':
-        for j in np.arange(0,len(query_00)):
-            qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
-            pdb = pdb[(pdb.residue != qres) | (pdb.atom_name != qatom) | (pdb.res_seq != qres_seq)]
-
     if qres == 'ASP' and qatom == 'HD2':
         for j in np.arange(0,len(query_00)):
             qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
