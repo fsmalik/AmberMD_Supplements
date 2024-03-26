@@ -172,12 +172,6 @@ for i in np.arange(0,len(uss_enterprise_errors)):
         for j in np.arange(0,len(query_00)):
             qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
             pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
-
-    if qres == 'CARG' and qatom == 'HC':
-        query_00 = pdb.query("residue=='ARG' and atom_name==@qatom").to_numpy()
-        for j in np.arange(0,len(query_00)):
-            qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
-            pdb = pdb[(pdb.residue != 'ARG') | (pdb.atom_name != qatom) | (pdb.res_seq != qres_seq)]
             
     if qres == 'ALA' and qatom == 'H1':
         for j in np.arange(0,len(query_00)):
