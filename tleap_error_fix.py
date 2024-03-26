@@ -63,15 +63,9 @@ print(uss_enterprise_errors)
 
 #Making Fixes for the Terminals
 
-pdb = pdb[(pdb.residue != 'ACE') | (pdb.atom_name != '1H')]
-pdb = pdb[(pdb.residue != 'ACE') | (pdb.atom_name != '2H')]
-pdb = pdb[(pdb.residue != 'ACE') | (pdb.atom_name != '3H')]
+pdb = pdb[~((pdb['residue'] == 'ACE') & ~(pdb['atom_name'].isin(['CH3', 'C', 'O'])))]
 
-pdb = pdb[(pdb.residue != 'NMA') | (pdb.atom_name != 'H')]
-pdb = pdb[(pdb.residue != 'NMA') | (pdb.atom_name != '1HA')]
-pdb = pdb[(pdb.residue != 'NMA') | (pdb.atom_name != '2HA')]
-pdb = pdb[(pdb.residue != 'NMA') | (pdb.atom_name != '3HA')]
-pdb = pdb[(pdb.residue != 'NMA') | (pdb.atom_name != 'CA')]
+pdb = pdb[~((pdb['residue'] == 'NMA') & ~(pdb['atom_name'].isin(['N'])))]
 
 pdb.loc[(pdb.residue == 'NMA') & (pdb.atom_name == 'N'), 'residue'] = 'NHE'
 
@@ -95,6 +89,11 @@ for i in np.arange(0,len(uss_enterprise_errors)):
             pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'HB2'
 
     if qres == 'GLU' and qatom == 'HE2':
+        for j in np.arange(0,len(query_00)):
+            qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
+            pdb = pdb[(pdb.residue != qres) | (pdb.atom_name != qatom) | (pdb.res_seq != qres_seq)]
+
+    if qres == 'ARG' and qatom == 'HC':
         for j in np.arange(0,len(query_00)):
             qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
             pdb = pdb[(pdb.residue != qres) | (pdb.atom_name != qatom) | (pdb.res_seq != qres_seq)]
