@@ -69,6 +69,22 @@ pdb = pdb[~((pdb['residue'] == 'NMA') & ~(pdb['atom_name'].isin(['N'])))]
 
 pdb.loc[(pdb.residue == 'NMA') & (pdb.atom_name == 'N'), 'residue'] = 'NHE'
 
+hip_filter = pdb[(pdb['residue'] == 'HIS') & pdb['atom_name'].isin(['HD1', 'HE2'])]
+
+hip_list = hip_filter[hip_filter.duplicated(subset='res_seq', keep=False)].to_numpy()
+
+hip_res_seqs = [sublist[5] for sublist in hip_list]
+hip_values = set(hip_res_seqs)
+
+for h in hip_values:
+    pdb.loc[(pdb.residue == 'HIS') & (pdb.res_seq == h), 'residue'] = 'HIP'
+
+hid_df = pdb[(pdb['residue'] == 'HIS') & (pdb['atom_name'] == 'HD1')].to_numpy()
+
+for k in range(len(hid_df)):
+    qres_seq = hid_df[k][5]
+    pdb.loc[(pdb.residue == 'HIS') & (pdb.res_seq == qres_seq), 'residue'] = 'HID'
+
 # executing this portion of code will change the pdb Data Frame
 # you can add other errors to this loop as well
 for i in np.arange(0,len(uss_enterprise_errors)):
