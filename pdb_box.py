@@ -1,6 +1,3 @@
-#!/usr/bin/env/python
-
-import numpy as np
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -52,64 +49,31 @@ print('#####+                             ::::::::::::::::::::::::::::::      ==
 print('######                         :    ::::--::::::-::------::---::       =      :=*===- ==:== ====:+       =::           ')
 print('#######                              ::-----------------------+                :     += -   ==           ::            ')
 print('########.                             --------------------------                     -      +=         =:-             ')
+print('\n')
+
+def process_file(input_file):
+    with open(input_file, 'r') as file:
+        for line in file:
+            if not (line.startswith('HEADER') or line.startswith('REMARK') or
+                    line.startswith('TER') or line.startswith('END')):
+                yield [float(coord) for coord in line.split()[6:9]]
 
 
-file = open(str(args.input),'r')
+def calculate_coordinates(coordinates):
+    x_values, y_values, z_values = zip(*coordinates)
+    x_max, y_max, z_max = max(x_values), max(y_values), max(z_values)
+    x_min, y_min, z_min = min(x_values), min(y_values), min(z_values)
+    x_coord, y_coord, z_coord = x_max - x_min, y_max - y_min, z_max - z_min
+    return x_max, y_max, z_max, x_min, y_min, z_min, x_coord, y_coord, z_coord
 
-list_file = list(file)
+def main():
+    coordinates = process_file(args.input)
+    x_max, y_max, z_max, x_min, y_min, z_min, x_coord, y_coord, z_coord = calculate_coordinates(coordinates)
+    print([x_coord, y_coord, z_coord])
+    print(x_max, y_max, z_max, x_min, y_min, z_min)
 
-remove_list=[]
-tingyun=[]
+    with open(args.output, "w+") as f:
+        f.write(str([x_coord, y_coord, z_coord]))
 
-for i in np.arange(0,len(list_file)):
-    if list_file[i].startswith('HEADER'):
-        remove_list.append(list_file[i])
-    if list_file[i].startswith('REMARK'):
-        remove_list.append(list_file[i])
-    if list_file[i].startswith('TER'):
-        remove_list.append(list_file[i])
-    if list_file[i].startswith('END'):
-        remove_list.append(list_file[i])
-
-        
-for j in np.arange(0,len(remove_list)):
-    list_file.remove(remove_list[j])
-    
-for i in np.arange(0,len(list_file)):
-    tingyun.append(list_file[i].split()[6:9])
-    
-tingyun2 = np.transpose(tingyun)
-
-x_values = []
-y_values = []
-z_values = []
-
-for k in tingyun2[0]:
-     x_values.append(float(k))
-
-for k in tingyun2[1]:
-     y_values.append(float(k))
-
-for k in tingyun2[2]:
-     z_values.append(float(k))
-
-x_max = max(x_values)
-y_max = max(y_values)
-z_max = max(z_values)
-
-x_min = min(x_values)
-y_min = min(y_values)
-z_min = min(z_values)
-
-x_coord = (x_max - x_min)
-y_coord = (y_max - y_min)
-z_coord = (z_max - z_min)
-
-coordinates = [round(x_coord,3),round(y_coord,3),round(z_coord,3)]
-
-print(coordinates)
-print(x_max,y_max,z_max,x_min,y_min,z_min)
-
-f = open(str(args.output),"w+")
-f.write(str(coordinates))
-f.close
+if __name__ == "__main__":
+    main()
