@@ -64,7 +64,7 @@ def calculate_coordinates(coordinates):
     x_max, y_max, z_max = max(x_values), max(y_values), max(z_values)
     x_min, y_min, z_min = min(x_values), min(y_values), min(z_values)
     x_coord, y_coord, z_coord = x_max - x_min, y_max - y_min, z_max - z_min
-    return x_max, y_max, z_max, x_min, y_min, z_min, x_coord, y_coord, z_coord
+    return round(x_max, 3), round(y_max, 3), round(z_max, 3), round(x_min, 3), round(y_min, 3), round(z_min, 3), round(x_coord, 3), round(y_coord, 3), round(z_coord, 3)
 
 def main():
     coordinates = process_file(args.input)
