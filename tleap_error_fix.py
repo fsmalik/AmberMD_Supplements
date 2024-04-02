@@ -81,7 +81,8 @@ for k in range(len(hid_df)):
     pdb.loc[(pdb.residue == 'HIS') & (pdb.res_seq == qres_seq), 'residue'] = 'HID'
 
 hid_mask = (pdb['residue'] == 'HID') & (pdb['atom_name'] == 'H2')
-pdb.loc[hid_mask, 'atom_name'] = 'H'
+hip_mask = (pdb['residue'] == 'HIP') & (pdb['atom_name'] == 'H2')
+pdb.loc[hid_mask | hip_mask, 'atom_name'] = 'H'
 
 # executing this portion of code will change the pdb Data Frame
 # you can add other errors to this loop as well
