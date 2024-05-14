@@ -54,9 +54,7 @@ print('\n')
 def process_file(input_file):
     with open(input_file, 'r') as file:
         for line in file:
-            if not (line.startswith('HEADER') or line.startswith('REMARK') or
-                    line.startswith('TER') or line.startswith('END') or
-                    line.startswith('CONECT')):
+            if (line.startswith('ATOM') or line.startswith('HETATM')):
                 yield [float(coord) for coord in line.split()[6:9]]
 
 
