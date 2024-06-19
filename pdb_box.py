@@ -54,8 +54,9 @@ print('\n')
 def process_file(input_file):
     with open(input_file, 'r') as file:
         for line in file:
+            xyz = line[30:38].split()+line[38:46].split()+line[46:54].split()
             if (line.startswith('ATOM') or line.startswith('HETATM')):
-                yield [float(coord) for coord in line.split()[6:9]]
+                yield [float(coord) for coord in xyz]
 
 
 def calculate_coordinates(coordinates):
