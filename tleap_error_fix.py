@@ -63,6 +63,9 @@ print(uss_enterprise_errors)
 
 #Making Fixes for the Terminals and Histidine - this will change the DataFrame
 
+pdb.loc[(pdb.residue == 'NMA'), 'record_name'] = 'ATOM'
+pdb.loc[(pdb.residue == 'ACE'), 'record_name'] = 'ATOM'
+
 pdb = pdb[~((pdb['residue'] == 'ACE') & ~(pdb['atom_name'].isin(['CH3', 'C', 'O'])))]
 pdb = pdb[~((pdb['residue'] == 'NMA') & ~(pdb['atom_name'].isin(['N'])))]
 pdb.loc[(pdb.residue == 'NMA') & (pdb.atom_name == 'N'), 'residue'] = 'NHE'
