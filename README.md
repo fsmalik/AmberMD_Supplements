@@ -7,4 +7,4 @@ To run either script -> ```python3 [pdb_box.py|tleap_error_fix.py] --help```
 
 The ter_addition_for_lipids.sh script will add termination records for lipids. When saving PDB files from Chimera, it will remove these records, and using this script will re-insert those records.
 
-./ter_addition_for_lipids.sh [input-file] [output-file]
+```./ter_addition_for_lipids.sh [input-file] [output-file]```
