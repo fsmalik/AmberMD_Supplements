@@ -215,7 +215,7 @@ for i in np.arange(0,len(uss_enterprise_errors)):
             qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
             pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
 
-    if qres == 'ASN' and qatom == 'H1':
+    if qres == 'ASP' and qatom == 'H1':
         for j in np.arange(0,len(query_00)):
             qres_seq = query_00[j][5] # this gives the residue number in sequence of the error
             pdb.loc[(pdb.residue == qres) & (pdb.atom_name == qatom) & (pdb.res_seq == qres_seq), 'atom_name'] = 'H'
